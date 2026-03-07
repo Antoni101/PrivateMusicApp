@@ -46,7 +46,7 @@ async function fetchLyrics(song) {
 }
 
 function updateLyrics() {
-    const current = sound.seek() + 0.1; // look 300ms ahead
+    const current = sound.seek() + 0.3; // look 300ms ahead
     const line = lyrics.findLast(l => l.time <= current);
 
     if (line && line.text !== currentLine) {

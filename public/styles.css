@@ -79,16 +79,16 @@ body::before {
 
 #lyrics {
     font-family: "Nunito", sans-serif;
-    letter-spacing: 0.01em;
-    font-weight: 300;
+    letter-spacing: 0.03em;
+    font-weight: 200;
     position: absolute;
     text-align: center;
-    top: 70%;
+    top: 80%;
     transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
     color: rgb(237, 235, 241);
-    font-size: 280%;
+    font-size: 250%;
     color: #FFFFFF;
-    text-shadow: 0 0 10px #9391cb;
+    text-shadow: 0 0 10px #838297;
     animation: float 5s ease-in-out infinite;
 }
 
