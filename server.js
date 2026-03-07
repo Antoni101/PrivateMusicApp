@@ -142,5 +142,4 @@ app.delete('/song/:songname/lyrics', (req, res) => {
     res.json({ success: true });
 });
 
-app.listen(process.env.PORT || 3000, ...)
-app.listen(3000, () => console.log('Running on http://localhost:3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Running on http://localhost:3000'));
