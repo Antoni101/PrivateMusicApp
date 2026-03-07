@@ -286,30 +286,50 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     background: rgba(255, 255, 255, 0.6);  /* brighter on hover */
 }
 
-.songList button {
-    border: none;
-    width: 65%;
-    transition: 0.2s;
-    cursor: pointer;
-    color: white;
-    margin: 15px auto;  /* change this */
-    display: block;    /* add this */
-    height: 60px;
-    font-size: 15px;
+.songItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    margin: 15px;
+    padding: 10px 15px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    text-shadow: 0 0 10px #9391cb;
-    background: #434343 none repeat scroll 0% 0%;
-    background: linear-gradient(
-        135deg,
-        rgba(127, 103, 170, 0.4) 0%,
-        rgba(85, 80, 156, 0.2) 100%
-    );
+    background: linear-gradient(135deg, rgba(127, 103, 170, 0.4) 0%, rgba(85, 80, 156, 0.2) 100%);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
-        0 4px 15px rgba(0,0,0,0.3),
-        inset 0 1px 0 rgba(255,255,255,0.15); /* this is the gloss */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
     backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.songItem:hover {
+    opacity: 1.0;
+    transform: scale(1.05);
+}
+
+.songItem:active {
+    transform: scale(0.95);
+}
+
+.songItem span {
+    color: white;
+    font-size: 13px;
+    text-shadow: 0 0 10px #9391cb;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+    transition: 0.2s;
+}
+
+.deleteBtn:hover {
+    color: red;
+    transform: scale(1.1);
 }
 
 
@@ -349,7 +369,7 @@ button:active {
 }
 
 .songlistTitle {
-    text-align: center;
+    margin-left: 20px;
     color: white;
     font-size: 12px;
     text-transform: uppercase;

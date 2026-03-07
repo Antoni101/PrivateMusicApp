@@ -292,9 +292,25 @@ async function loadSonglist() {
 }
 
 function updateSonglist(songObj) {
-    const newSong = document.createElement("button");
-    newSong.innerHTML = `${songObj.title} | ${songObj.artist}`;
-    newSong.onclick = () => selectSong(songObj);
+    const newSong = document.createElement("div");
+    newSong.classList.add("songItem");
+
+    const songName = document.createElement("span");
+    songName.innerHTML = `${songObj.title} | ${songObj.artist}`;
+    songName.onclick = () => selectSong(songObj);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerHTML = "✕";
+    deleteBtn.classList.add("deleteBtn");
+    deleteBtn.onclick = async (e) => {
+        e.stopPropagation();
+        await songObj.delete();
+        songList = songList.filter(s => s.folderName !== songObj.folderName);
+        newSong.remove();
+    };
+
+    newSong.appendChild(songName);
+    newSong.appendChild(deleteBtn);
     document.getElementById("songs").appendChild(newSong);
     songList.push(songObj);
 }
