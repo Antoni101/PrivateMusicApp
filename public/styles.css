@@ -56,7 +56,7 @@ body::before {
     letter-spacing: 0.15em;
     font-weight: 400;
     background: linear-gradient(135deg, #ffffff, #a1a0c2);
-    -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0.9;
 }
@@ -184,9 +184,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
     border-radius: 50px;
-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-
-
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 #music-slider:hover {
@@ -363,80 +361,4 @@ button:active {
     display: none;
 }
 
-#search {
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
 
-}
-
-#search-input {
-    font-family: "Nunito", sans-serif;
-    font-weight: 300;
-    font-size: 30px;
-    border: None;
-    padding: 15px;
-    border-radius: 30px;
-    border: 3px solid rgba(127, 103, 170, 0.15);
-}
-
-.searchBtn {
-    font-size: 30px;
-    border: None;
-    padding: 20px;
-    border-radius: 30px;
-    background: rgba(127, 103, 170, 0.15);
-    color: white;
-}
-
-#songResults {
-    height: 20vw;
-    width: 15vw;
-    max-height: 40vw;  /* or whatever feels right, or remove entirely */
-    width: 45vw;       /* also remove the duplicate width on line 314 */
-    display: flex;
-    justify-content: center;
-    flex-direction: column;  /* add this so songs stack vertically */
-    justify-content: flex-start;  /* change from center */
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    top: 80%;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30vw;
-    color: white;
-    overflow-y: auto;
-}
-
-.songResult {
-    padding: 20px;
-    font-weight: 600;
-    font-size: 20px;
-    text-align: center;
-    background-color: rgb(42, 42, 80);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    cursor: pointer;
-    width: 60%;
-    height: 25%;
-    border-radius: 10px;
-    transition: 0.2s;
-    opacity: 0.8;
-}
-
-
-.songResult:hover {
-    transform: scale(1.05);
-}
-
-.songResult:active {
-    transform: scale(0.95);
-}
