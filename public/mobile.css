@@ -1,0 +1,148 @@
+/* MOBILE CSS STUFF */
+
+@media (max-width: 768px) {
+
+    .pageLink {
+        display: None;
+    }
+
+    .mobile-only {
+        display: block;
+        position: absolute;
+        top: 90%;
+        text-align: center;
+        color: white;
+        font-size: 15px;
+        opacity: 0.1;
+        width: 80%;
+        text-shadow: 0 0 3px #9391cb;
+    }
+
+    .songList {
+        left: 50%;
+        top: 21%;
+        transform: translateX(-50%);
+        width: 55vw;
+    }
+
+    .player {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+    }
+
+    .songlistTitle {
+        text-align: center;
+        color: white;
+        font-size: 12px;
+        
+        opacity: 0.3;
+    }
+
+    #lyrics {
+        font-family: "Nunito", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        position: absolute;
+        text-align: center;
+        top: 65%;
+        transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+        color: rgb(237, 235, 241);
+        font-size: 150%;
+        width: 80vw;
+        color: #FFFFFF;
+        text-shadow: 0 0 10px #9391cb;
+        animation: float 5s ease-in-out infinite;
+    }
+
+    .songList button {
+        opacity: 0.5;
+
+        width: 80%;
+        transition: 0.2s;
+        cursor: pointer;
+        color: white;
+        margin: 10px auto;  /* change this */
+        display: block;    /* add this */
+        height: 50px;
+        padding: 10px;
+        font-size: 10px;
+        border-radius: 15px;
+        text-shadow: 0 0 10px #9391cb;
+        background: linear-gradient(
+            135deg,
+            rgba(127, 103, 170, 0.4) 0%,
+            rgba(85, 80, 156, 0.2) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 
+            0 4px 15px rgba(0,0,0,0.3),
+            inset 0 1px 0 rgba(255,255,255,0.15); /* this is the gloss */
+        backdrop-filter: blur(10px);
+    }
+
+    #playBtn {
+        border: none;
+        transition: 0.2s;
+        text-align: center;
+        cursor: pointer;
+        background: rgba(127, 103, 170, 0.15);
+        color: white;
+        display: block;    /* add this */
+        height: 70px;
+        width: 70px;
+        opacity: 0.8;
+        font-size: 25px;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    #volume-slider {
+        display: None;
+    }
+
+    #music-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        background: #978fb6;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: 0.2s;
+        opacity: 0.5;
+    }
+
+    #music-slider {
+        transition: 1.5s;
+        height: 100px;
+        -webkit-appearance: none;  /* Override default CSS styles */
+        appearance: none;
+        width: 50vw; /* Full-width */
+        height: 25px; /* Specified height */
+        background: rgba(104, 84, 142, 0.15);
+        outline: none; /* Remove outline */
+        opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+        border-radius: 50px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+
+    #vis {
+        display: flex;
+        align-items: flex-end  /* bars grow upward from bottom */;
+        gap: 1px; 
+        height: 20vh;
+        width: 200%;
+        position: absolute;
+        margin-top: 90vh;
+        user-select: none;
+    }
+}

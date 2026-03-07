@@ -1,0 +1,15 @@
+{
+    "name": "Music Player Demo",
+    "short_name": "MusicPlayer",
+    "start_url": "/MusicPlayer/index.html",
+    "display": "standalone",
+    "background_color": "#181830",
+    "theme_color": "#181830",
+    "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

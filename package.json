@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^5.2.1",
+    "howler": "^2.2.4",
+    "node-fetch": "^3.3.2"
+  },
+  "name": "privatemusicapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antoni101/PrivateMusicApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Antoni101/PrivateMusicApp/issues"
+  },
+  "homepage": "https://github.com/Antoni101/PrivateMusicApp#readme"
+}

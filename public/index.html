@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#181830">
+</head>
+<body onload="pageLoad()">
+
+    <h1 class="pageTitle">Local Music App</h1>
+    <p class="mobile-only">Mobile is a work in progress, might contain bugs. Add to home screen for a better experience</p>
+    
+    <img id="album-cover" src="" />
+    <div id="lyrics"></div>
+
+
+    <div class="songList">
+        <h1 class="songlistTitle">Downloaded Music</h1>
+        <div id="songs"></div></div>
+    </div>
+
+    <div id="search">
+        <input type="text" id="search-input" placeholder="Search for a song...">
+        <button class="searchBtn" onclick="showResults()">Search</button>
+    </div>
+    <div id="songResults"></div>
+
+    <div id="vis"></div>
+
+    <div class="player">
+        <button id="playBtn" onclick="playSong()">▶︎</button>
+        <input type="range" min="1" max="100" value="0" id="music-slider" oninput="seekSong(this.value)" onmousedown="clearInterval(playerInterval)" onmouseup="playerInterval = setInterval(updatePlayer, 1000)">
+        <h1 id="music-time">0:00</h1>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="mobile.js"></script>
+    <script src="lyrics.js"></script>
+    <script src="visualizer.js"></script>
+</body>
+</html>
