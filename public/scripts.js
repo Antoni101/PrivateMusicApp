@@ -124,10 +124,17 @@ async function showResults() {
         previewBtn.classList.add("previewBtn");
         previewBtn.innerHTML = "▶";
         previewBtn.onclick = async (e) => {
-            e.stopPropagation(); // prevent triggering the download onclick
+            e.stopPropagation();
+            
+            if (previewSound && previewSound.playing()) {
+                previewSound.stop();
+                previewBtn.innerHTML = "▶";
+                return;
+            }
+
+            previewBtn.innerHTML = "⏹";
             const res = await fetch(`/preview?title=${encodeURIComponent(thisSong.name)}&artist=${encodeURIComponent(thisSong.primaryArtists)}`).then(r => r.json());
             if (res.previewUrl) previewSong(res.previewUrl);
-            previewBtn.innerHTML = "⏹";
         };
         songItem.appendChild(previewBtn);
 
