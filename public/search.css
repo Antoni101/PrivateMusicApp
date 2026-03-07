@@ -67,6 +67,7 @@ input:focus {
     background-color: rgba(36, 21, 48, 0.899);
     transition: 0.2s;
     cursor: pointer;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
 }
 
 .songResult > .previewBtn:hover {
@@ -79,9 +80,11 @@ input:focus {
     right: 10px;
     padding: 10px;
     z-index: 3;
+    font-weight: 500;
     border-radius: 5px;
     background-color: rgba(36, 21, 48, 0.899);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
     transition: 0.2s;
     cursor: pointer;
 }

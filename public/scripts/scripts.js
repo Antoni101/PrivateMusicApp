@@ -293,7 +293,7 @@ async function loadSonglist() {
 
 function updateSonglist(songObj) {
     const newSong = document.createElement("button");
-    newSong.innerHTML = `${songObj.title}-${songObj.artist}`;
+    newSong.innerHTML = `${songObj.title} | ${songObj.artist}`;
     newSong.onclick = () => selectSong(songObj);
     document.getElementById("songs").appendChild(newSong);
     songList.push(songObj);
