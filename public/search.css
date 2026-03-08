@@ -1,8 +1,19 @@
 
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #suggestions {
     position: absolute;
     overflow: visible;
-    background-color: rgba(109, 97, 146, 0.109);
+    background-color: rgba(109, 97, 146, 0.022);
     width: 30vw;
     height: auto;
     top: 25%;
@@ -21,7 +32,7 @@
     border: 1px solid rgba(55, 54, 67, 0.693);
     height: 40px;
     margin-bottom: 10px;
-    opacity: 0.7;
+    opacity: 0.5;
     transition: 0.2s;
     cursor: pointer;
 }
@@ -59,10 +70,14 @@
     align-items: center;
     gap: 10px;
     position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
+    top: 15%;
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+#search:hover { 
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 input:focus {
@@ -70,9 +85,10 @@ input:focus {
 }
 
 #search-input {
+    width: 20vw;
     font-family: "Nunito", sans-serif;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 25px;
     color: #ffffffce;
     padding: 20px;
     border-radius: 30px;
@@ -81,7 +97,7 @@ input:focus {
 }
 
 .searchBtn {
-    font-size: 30px;
+    font-size: 25px;
     padding: 24px;
     border-radius: 30px;
     border: 3px solid rgba(127, 103, 170, 0.15);
@@ -111,11 +127,10 @@ input:focus {
     position: absolute !important;
     top: 10px;
     right: 10px;
-    padding: 5px 10px;
+    padding: 6px 10px;
     z-index: 3;
-    border-radius: 10%;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: rgba(36, 21, 48, 0.899);
     transition: 0.2s;
     cursor: pointer;
     border: 1.5px solid rgba(255, 255, 255, 0.15);
@@ -128,20 +143,20 @@ input:focus {
 .songResult > .downloadBtn {
     position: absolute !important;
     top: 70%;
+    width: 130px;
     right: 10px;
     padding: 10px;
     z-index: 3;
     font-weight: 500;
-    border-radius: 5px;
-    background-color: rgba(36, 21, 48, 0.899);
+    border-radius: 3px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.15);
     transition: 0.2s;
     cursor: pointer;
 }
 
 .songResult > .downloadBtn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .songResult {
@@ -151,14 +166,16 @@ input:focus {
     background-color: rgb(28, 28, 48);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 60%;
-    height: auto;
-    border-radius: 12px;
-    transition: 0.2s;
+    height: 5%;
+    border-radius: 20px;
     opacity: 0.9;
     margin: 10px;
     background-blend-mode: overlay;
     overflow: hidden;
-    
+    animation: fadeSlideIn 0.3s ease forwards;
+    opacity: 0;
+    border: 5px solid rgba(127, 103, 170, 0.15);
+    transition: 0.2s;
 }
 
 .songResult::before {
@@ -166,7 +183,7 @@ input:focus {
     position: absolute;
     inset: 0;
     background: inherit;
-    filter: blur(0.5px);
+    filter: blur(2px);
     scale: 1.1; /* prevents blur edges from showing */
     z-index: 0;
 }
@@ -206,6 +223,7 @@ input:focus {
     font-weight: bold;
     font-size: 20px;
     padding: 1px;
+    text-decoration: underline;
 }
 
 .resultArtist {
@@ -224,8 +242,9 @@ input:focus {
 
 .explicit {
     display: block;
-    color: red;
+    color: rgb(171, 50, 50);
     font-size: 10px;
+    text-decoration: underline;
 }
 
 #songResults::-webkit-scrollbar {

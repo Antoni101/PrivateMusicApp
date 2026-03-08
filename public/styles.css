@@ -72,6 +72,17 @@ body::before {
     transition: 0.2s;
 }
 
+#songInfo {
+    font-family: "Nunito", sans-serif;
+    position: absolute;
+    top: -65%;
+    text-align: center;
+    color: rgb(204, 212, 249);
+    font-weight: 400;
+    font-size: 18px;
+    opacity: 0.2;
+}
+
 .pageLink:hover {
     opacity: 0.8;
     transform: scale(1.1);
@@ -83,10 +94,10 @@ body::before {
     font-weight: 200;
     position: absolute;
     text-align: center;
-    top: 80%;
+    top: 75%;
     transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
     color: rgb(237, 235, 241);
-    font-size: 250%;
+    font-size: 280%;
     color: #FFFFFF;
     text-shadow: 0 0 10px #838297;
     animation: float 5s ease-in-out infinite;
@@ -218,7 +229,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     align-items: flex-end  /* bars grow upward from bottom */;
     gap: 2px; 
     height: 20vh;
-    width: 170%;
+    width: 200%;
     position: absolute;
     margin-top: 82vh;
     user-select: none;

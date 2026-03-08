@@ -55,8 +55,11 @@ function createSongElement(thisSong) {
             thisSong.downloadUrl[4].link,
             thisSong.explicitContent === 1
         );
+        downloadBtn.innerHTML = "Downloading...";
+        downloadBtn.style.pointerEvents = "none";
         await song.download();
         updateSonglist(song);
+        downloadBtn.innerHTML = "Downloaded";
     };
     songItem.appendChild(downloadBtn);
 
@@ -79,11 +82,17 @@ async function showSuggestions(query) {
     let resultsDiv = document.getElementById("songResults");
     resultsDiv.innerHTML = "";
     document.getElementById("suggestions").innerHTML = "";
+    const seen = new Set();
+    
     for (let i = 0; i < results.length; i++) {
         
         let song = results[i];
         let songName = song.trackName;
         let songArtist = song.artistName;
+
+        const key = `${songName}|${songArtist}`.toLowerCase();
+        if (seen.has(key)) continue;
+        seen.add(key);
 
         let suggestionItem = document.createElement("div");
         suggestionItem.classList.add("songSuggestion");
@@ -128,6 +137,7 @@ async function showResults() {
         let thisSong = results[i];
         if (thisSong.language == "english") {
             let songItem = createSongElement(thisSong);
+            songItem.style.animationDelay = `${i * 100}ms`;
             resultsDiv.appendChild(songItem);
         }
         //console.log(`\n${thisSong.title} by ${thisSong.artist} (${thisSong.album})`);
@@ -140,7 +150,7 @@ document.getElementById("search-input").addEventListener("input", (e) => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => {
         showSuggestions(e.target.value);
-    }, 200);
+    }, 100);
 });
 
 let previewSound = null;

@@ -80,6 +80,8 @@ async function selectSong(thisSong) {
         },
         onplay: function() {
             setupVisualizer();
+            let songInfo = document.getElementById("songInfo");
+            songInfo.innerHTML = `Playing: ${thisSong.title} by ${thisSong.artist}`;  
             document.getElementById("songResults").style.display = "none";
         }
     });
@@ -167,6 +169,8 @@ function updateSonglist(songObj) {
 
     const songName = document.createElement("span");
     songName.innerHTML = `${songObj.title} | ${songObj.artist}`;
+
+    if (songObj.explicit == true) { songName.innerHTML += " 🅴" }
     newSong.onclick = () => selectSong(songObj);
     
 
