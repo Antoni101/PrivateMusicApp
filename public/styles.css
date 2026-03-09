@@ -45,7 +45,7 @@ body::before {
     100% { background-position: 0% 50%; }
 }
 
-.pageTitle {
+#pageTitle {
     font-family: "Nunito", sans-serif;
     position: absolute;
     top: 5%;
@@ -59,6 +59,7 @@ body::before {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0.9;
+    transition: 0.1s;
 }
 
 .pageLink {
@@ -78,7 +79,7 @@ body::before {
     top: -65%;
     text-align: center;
     color: rgb(204, 212, 249);
-    font-weight: 400;
+    font-weight: 200;
     font-size: 18px;
     opacity: 0.2;
 }
@@ -124,10 +125,10 @@ body::before {
 #lyrics {
     font-family: "Nunito", sans-serif;
     letter-spacing: 0.03em;
-    font-weight: 300;
+    font-weight: 200;
     position: absolute;
     text-align: center;
-    top: 75%;
+    top: 80%;
     transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
     color: rgb(237, 235, 241);
     font-size: 250%;
@@ -266,7 +267,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     position: absolute;
     margin-top: 82vh;
     user-select: none;
-    margin-left: 50px;
+    margin-left: 350px;
 }
 
 
@@ -277,7 +278,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     background-color: rgb(85, 80, 156);
     width: 10%;
     min-height: 5px;  /* so bars don't disappear completely on silence */
-    transition: 0.15s;
+    transition: 0.2s;
     border-radius: 10px;
     background: linear-gradient(
         to top,
@@ -286,7 +287,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     );
     box-shadow: 0 0 4px rgba(147, 145, 203, 0.2);
     border: none;
-    opacity: 0.2;
+    opacity: 0.15;
 }
 
 .player {
@@ -302,11 +303,12 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .songList {
-    height: 40vh;
-    width: 25vw;
+    height: 60vh;
+    width: 15vw;
     position: absolute;
     left: 1%;
     overflow-y: auto;
+    overflow-x: hidden;
     opacity: 0.8;
     transition: 0.2s;
 }
@@ -314,7 +316,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 .songList:hover { opacity: 1.0; }
 
 .songList::-webkit-scrollbar {
-    width: 4px;  /* thin bar */
+    width: 3px;  /* thin bar */
 }
 
 .songList::-webkit-scrollbar-track {
@@ -322,7 +324,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .songList::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);  /* subtle white */
+    background: rgba(255, 255, 255, 0.048);  /* subtle white */
     border-radius: 10px;  /* rounded */
 }
 
@@ -334,8 +336,9 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 50%;
+    width: 70%;
     margin: 15px;
+    height: 30px;
     padding: 10px 15px;
     border-radius: 10px;
     background: linear-gradient(135deg, rgba(127, 103, 170, 0.4) 0%, rgba(85, 80, 156, 0.2) 100%);
@@ -344,6 +347,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     backdrop-filter: blur(10px);
     cursor: pointer;
     transition: 0.2s;
+    opacity: 0.3;
 }
 
 .songItem:hover {
@@ -379,7 +383,7 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 
 #playBtn {
     border: none;
-    transition: 0.2s;
+    transition: 0.1s;
     text-align: center;
     cursor: pointer;
     background: transparent;
