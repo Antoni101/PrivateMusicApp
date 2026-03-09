@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Local Music App</title>
+    <title>ANTH.fm</title>
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile.css">
@@ -18,7 +18,7 @@
 </head>
 <body onload="pageLoad()">
 
-    <h1 class="pageTitle">Local Music App</h1>
+    <h1 class="pageTitle">ANTH.fm</h1>
     <p class="mobile-only">Mobile is a work in progress, might contain bugs. Add to home screen for a better experience</p>
     
     <img id="album-cover" src="" />
@@ -39,6 +39,9 @@
 
     <div id="vis"></div>
 
+    <div id="musicBot"></div>
+
+
     <div class="player">
         <h1 id="songInfo"></h1>
         <button id="playBtn" onclick="playSong()">▶︎</button>
@@ -51,6 +54,7 @@
     <script src="/scripts/search.js"></script>
     <script src="/scripts/mobile.js"></script>
     <script src="/scripts/lyrics.js"></script>
+    <script src="/scripts/musicbot.js"></script>
     <script src="/scripts/visualizer.js"></script>
 </body>
 </html>

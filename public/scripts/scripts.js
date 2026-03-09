@@ -95,6 +95,9 @@ async function selectSong(thisSong) {
 
     playing = false;
     playSong();
+
+    await musicBot(thisSong);
+    
 }
 
 function playSong() {

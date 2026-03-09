@@ -2,6 +2,8 @@ import express from 'express';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const MUSIC_DIR = './Music';
 
@@ -88,6 +90,25 @@ app.get('/info/:songname', (req, res) => {
     res.status(404).json({ error: 'No cached info' });
 });
 
+
+
+// AI BOT
+
+app.post("/ai", async (req, res) => {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${process.env.MUSICBOT_KEY}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            model: "stepfun/step-3.5-flash:free", // free model
+            messages: [{ role: "user", content: req.body.message }]
+        })
+    });
+    const data = await response.json();
+    res.json(data);
+});
 
 
 // LYRICS STUFF

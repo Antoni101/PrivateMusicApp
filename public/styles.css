@@ -88,16 +88,49 @@ body::before {
     transform: scale(1.1);
 }
 
+#musicBot {
+    font-family: "Nunito", sans-serif;
+    color: white;
+    width: 25vw;
+    height: 30vh;
+    font-weight: 200;
+    position: absolute;
+    right: 8%;
+    top: 35%;
+    font-size: 23px;
+    text-align:right;
+    line-height: 30px;
+    letter-spacing: 0.01em;
+    word-spacing: 0.02em;
+    text-shadow: 0 0 10px #838297;
+    opacity: 0.8;
+}
+
+.songRec {
+    opacity: 0.7;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.songRec:hover {
+    opacity: 1.0;
+    transform: scale(1.1);
+}
+
+.songRec:active {
+    transform: scale(0.9);
+}
+
 #lyrics {
     font-family: "Nunito", sans-serif;
     letter-spacing: 0.03em;
-    font-weight: 200;
+    font-weight: 300;
     position: absolute;
     text-align: center;
     top: 75%;
     transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
     color: rgb(237, 235, 241);
-    font-size: 280%;
+    font-size: 250%;
     color: #FFFFFF;
     text-shadow: 0 0 10px #838297;
     animation: float 5s ease-in-out infinite;
