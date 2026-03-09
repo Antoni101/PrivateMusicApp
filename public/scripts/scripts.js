@@ -66,6 +66,7 @@ async function selectSong(thisSong) {
     resetVisualizer();
 
     // load lyrics once on select, not every play
+    document.getElementById('lyrics').innerHTML = '';
     await fetchLyrics(thisSong);
 
     sound = new Howl({
@@ -101,7 +102,6 @@ async function selectSong(thisSong) {
 }
 
 function playSong() {
-    document.getElementById('lyrics').innerHTML = '';
     if (sound == null) return
     let btn = document.getElementById("playBtn");
     if (playing == false) {
@@ -171,12 +171,11 @@ function updateSonglist(songObj) {
     newSong.classList.add("songItem");
 
     const songName = document.createElement("span");
-    songName.innerHTML = `${songObj.title} | ${songObj.artist}`;
+    songName.innerHTML = `${songObj.title} | ${songObj.artist}`.slice(0, 30) + " -";
 
     if (songObj.explicit == true) { songName.innerHTML += " 🅴" }
     newSong.onclick = () => selectSong(songObj);
     
-
     const deleteBtn = document.createElement("button");
     deleteBtn.innerHTML = "✕";
     deleteBtn.classList.add("deleteBtn");

@@ -60,6 +60,7 @@ function createSongElement(thisSong) {
         await song.download();
         updateSonglist(song);
         downloadBtn.innerHTML = "Downloaded";
+        selectSong(song);
     };
     songItem.appendChild(downloadBtn);
 

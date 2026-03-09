@@ -53,10 +53,8 @@ function getFrequencyData() {
     analyser.getByteFrequencyData(dataArray)
 
     const pageTitle =document.getElementById("pageTitle");
-    const btn =document.getElementById("playBtn");
-    const bass = dataArray[10] / 200; 
-    pageTitle.style.transform = `scale(${1 + bass * 0.7})`;
-    btn.style.transform = `scale(${1 + bass * 0.3})`;
+    const bass = dataArray[7] / 200; 
+    pageTitle.style.transform = `scale(${1 + bass * 0.5})`;
 
     const children = document.getElementById("songs").children;
     
@@ -64,6 +62,6 @@ function getFrequencyData() {
 
     const bars = document.querySelectorAll('.bars')
     bars.forEach((bar, i) => {
-        bar.style.height = (dataArray[i] * 2) + 'px'  // 0-255px tall
+        bar.style.height = (dataArray[i] * 3) + 'px'  // 0-255px tall
     })
 }
