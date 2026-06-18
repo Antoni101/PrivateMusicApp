@@ -72,7 +72,7 @@ async function selectSong(thisSong) {
     sound = new Howl({
         src: [`${thisSong.src}`],
         volume: parseFloat(volumeSlider.value),
-        format: ['mp4'],
+        format: ['mp3'],
         html5: true,
         onloaderror: (id, err) => console.error("Load error:", err),
         onplayerror: (id, err) => console.error("Play error:", err),
@@ -97,7 +97,7 @@ async function selectSong(thisSong) {
     playing = false;
     playSong();
 
-    await musicBot(thisSong);
+    //await musicBot(thisSong);
     
 }
 
@@ -159,7 +159,7 @@ async function loadSonglist() {
         console.log('info:', info);
         
         const songObj = new Song(info.title, info.artist, info.album, info.cover, null, info.explicit);
-        songObj.src = `/Music/${folder}/${folder}.mp4`;
+        songObj.src = `/Music/${folder}/${folder}.mp3`;
         updateSonglist(songObj);
     }
 

@@ -19,14 +19,27 @@ app.get('/songs', (req, res) => {
     res.json(folders);
 });
 
+import multer from 'multer';
+const upload = multer({ dest: 'tmp/' });
+
+app.post('/upload', upload.single('file'), (req, res) => {
+    const { filename, metadata } = req.body;
+    const songDir = path.join(MUSIC_DIR, filename);
+    fs.mkdirSync(songDir, { recursive: true });
+    fs.renameSync(req.file.path, path.join(songDir, `${filename}.mp3`));
+    fs.writeFileSync(path.join(songDir, 'info.json'), JSON.stringify(JSON.parse(metadata), null, 2));
+    res.json({ success: true });
+});
+
 // proxy for saavn search, W API
 app.get('/search', async (req, res) => {
     try {
         const { q } = req.query;
-        const response = await fetch(`https://jiosaavn-api-privatecvc2.vercel.app/search/songs?query=${q}&limit=10`);
+        const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=music&limit=10`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
+        console.log(err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -163,4 +176,4 @@ app.delete('/song/:songname/lyrics', (req, res) => {
     res.json({ success: true });
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Running on http://localhost:3000'));
+app.listen(process.env.PORT || 2000, () => console.log('Running on http://localhost:2000'));

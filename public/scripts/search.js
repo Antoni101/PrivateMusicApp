@@ -5,23 +5,23 @@ function createSongElement(thisSong) {
     const songItem = document.createElement("div");
     songItem.classList.add("songResult");
 
-    songItem.style.backgroundImage = `url(${thisSong.image[thisSong.image.length - 1].link})`;
+    songItem.style.backgroundImage = `url(${thisSong.artworkUrl100})`;
     songItem.style.backgroundSize = 'cover';
     songItem.style.backgroundPosition = 'center';
 
     const songName = document.createElement("span");
     songName.classList.add("resultName");
-    songName.innerHTML = truncate(thisSong.name, 3);
+    songName.innerHTML = truncate(thisSong.trackName, 3);
     songItem.appendChild(songName);
 
     const songArtist = document.createElement("span");
     songArtist.classList.add("resultArtist");
-    songArtist.innerHTML = truncate(thisSong.primaryArtists, 2);
+    songArtist.innerHTML = truncate(thisSong.artistName, 2);
     songItem.appendChild(songArtist);
 
     const songAlbum = document.createElement("span");
     songAlbum.classList.add("resultAlbum");
-    songAlbum.innerHTML = truncate(thisSong.album.name, 2);
+    songAlbum.innerHTML = truncate(thisSong.collectionName, 2);
     songItem.appendChild(songAlbum);
 
     const previewBtn = document.createElement("span");
@@ -37,30 +37,42 @@ function createSongElement(thisSong) {
         }
 
         previewBtn.innerHTML = "⏹";
-        const res = await fetch(`/preview?title=${encodeURIComponent(thisSong.name)}&artist=${encodeURIComponent(thisSong.primaryArtists)}`).then(r => r.json());
-        if (res.previewUrl) previewSong(res.previewUrl);
+        previewSong(thisSong.previewUrl);
     };
     songItem.appendChild(previewBtn);
 
     const downloadBtn = document.createElement("span");
     downloadBtn.classList.add("downloadBtn");
-    downloadBtn.innerHTML = "Download";
+    downloadBtn.innerHTML = "Upload";
     downloadBtn.onclick = async (e) => {
         e.stopPropagation();
-        const song = new Song(
-            thisSong.name,
-            thisSong.primaryArtists,
-            thisSong.album.name,
-            thisSong.image[thisSong.image.length - 1].link,
-            thisSong.downloadUrl[4].link,
-            thisSong.explicitContent === 1
-        );
-        downloadBtn.innerHTML = "Downloading...";
-        downloadBtn.style.pointerEvents = "none";
-        await song.download();
-        updateSonglist(song);
-        downloadBtn.innerHTML = "Downloaded";
-        selectSong(song);
+        const input = document.createElement("input");
+        input.type = "file";
+        input.accept = "audio/*";
+        input.onchange = async () => {
+            const file = input.files[0];
+            if (!file) return;
+            downloadBtn.innerHTML = "Uploading...";
+            downloadBtn.style.pointerEvents = "none";
+
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("filename", `${thisSong.trackName}-${thisSong.artistName}`);
+            formData.append("metadata", JSON.stringify({
+                title: thisSong.trackName,
+                artist: thisSong.artistName,
+                album: thisSong.collectionName,
+                cover: thisSong.artworkUrl100,
+                explicit: thisSong.contentAdvisoryRating === "Explicit"
+            }));
+
+            await fetch("/upload", { method: "POST", body: formData });
+            const song = new Song(thisSong.trackName, thisSong.artistName, thisSong.collectionName, thisSong.artworkUrl100, null);
+            song.src = `/Music/${song.folderName}/${song.folderName}.mp3`;
+            updateSonglist(song);
+            downloadBtn.innerHTML = "Uploaded";
+        };
+        input.click();
     };
     songItem.appendChild(downloadBtn);
 
@@ -117,32 +129,27 @@ async function showSuggestions(query) {
 
         document.getElementById("suggestions").appendChild(suggestionItem);
 
-        console.log(`${songName} ${songArtist}`);
+        //console.log(`${songName} ${songArtist}`);
     }
 }
 
-async function showResults() { 
+async function showResults() {
     const songInput = document.getElementById("search-input");
     document.getElementById("suggestions").innerHTML = "";
-    const query = encodeURIComponent(songInput.value); 
+    const query = encodeURIComponent(songInput.value);
     const res = await fetch(`/search?q=${query}`).then(r => r.json());
 
-    let results = res.data.results;
+    let results = res.results;
     console.log(results);
     let resultsDiv = document.getElementById("songResults");
     resultsDiv.style.display = "flex";
     resultsDiv.innerHTML = "";
 
     for (let i = 0; i < results.length; i++) {
-
         let thisSong = results[i];
-        if (thisSong.language == "english") {
-            let songItem = createSongElement(thisSong);
-            songItem.style.animationDelay = `${i * 100}ms`;
-            resultsDiv.appendChild(songItem);
-        }
-        //console.log(`\n${thisSong.title} by ${thisSong.artist} (${thisSong.album})`);
-
+        let songItem = createSongElement(thisSong);
+        songItem.style.animationDelay = `${i * 100}ms`;
+        resultsDiv.appendChild(songItem);
     }
 }
 
