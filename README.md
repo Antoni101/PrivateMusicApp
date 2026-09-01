@@ -1,4 +1,11 @@
-startup:
+
+
+https://github.com/user-attachments/assets/0eb4dd8c-543d-46e3-9cd3-3fb772e58b41
+
+
+
+
+Startup:
 
 cd Desktop
 
